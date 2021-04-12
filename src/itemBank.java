@@ -1,9 +1,11 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class itemBank {
+
     ArrayList<Item> items;
 
     public itemBank(String fileName) throws FileNotFoundException{
@@ -25,7 +27,6 @@ public class itemBank {
             items.add(item);
             //System.out.println(item.getDescription());
         }
-
     }
 
 }
