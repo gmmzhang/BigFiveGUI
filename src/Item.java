@@ -7,7 +7,7 @@ public class Item {
 
     public Item(Scanner line){
         itemNumber=line.next();
-        description=line.nextLine();
+        description=line.nextLine().trim();
     }
 
     public String getItemNumber(){return itemNumber;}
