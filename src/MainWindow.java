@@ -109,7 +109,7 @@ public class MainWindow extends JFrame {
     public static void main(String[] args) throws FileNotFoundException {
 //        MainWindow window = new MainWindow();
         try {
-            itemBank bank = new itemBank("Questions");
+            itemBank bank = new itemBank("Questions.txt");
             MainWindow window = new MainWindow(bank);
 
         }catch (FileNotFoundException e){
