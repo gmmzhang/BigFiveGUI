@@ -9,14 +9,14 @@ public class WelcomePage extends JPanel {
     private JButton startButton;
     private JLabel instructionLabel1;
     private JLabel instructionLabel2;
-    private MainWindow frame;
+    private MainFrame frame;
     private String userID;
     private JPanel centerPanel;
     private JPanel tempPanel1;
     private JPanel tempPanel2;
 
-    public WelcomePage(MainWindow mainwindow, String user){
-        frame = mainwindow;
+    public WelcomePage(MainFrame mainframe, String user){
+        frame = mainframe;
         userID = user;
 
         setLayout(new BorderLayout());
