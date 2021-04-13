@@ -1,60 +1,44 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.FileNotFoundException;
 import java.util.Hashtable;
 
-public class QuestionPanel extends JFrame {
+public class QuestionPanel extends JPanel {
 
-    private itemBank bank;
+    private ItemBank bank;
     private JLabel title;
     private JPanel titlePanel;
+    private MainWindow frame;
+    private String userID;
+    private JSlider optionSlider;
+    private JComboBox questionChooser;
+    private JPanel bottomPanel;
+    private JButton nextButton;;
+    private int currentItemNumber;
 
-    public QuestionPanel(itemBank bank){
+    public QuestionPanel(MainWindow mainwindow, ItemBank itembank, String user) {
+        frame = mainwindow;
+        bank = itembank;
+        userID = user;
+        currentItemNumber = 1;
 
-        super("Big Five Personality Assessment");
-        this.bank = bank;
-        setSize(1000,500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Color backgroundColor = new Color(153,204,255);
-        getContentPane().setBackground(backgroundColor);
-        getContentPane().setLayout(new BorderLayout());
-
+        setLayout(new BorderLayout());
 
         // NORTH
         titlePanel = new JPanel();
-        titlePanel.setOpaque(false);
+        //titlePanel.setOpaque(false);
         titlePanel.setBorder(BorderFactory.createEmptyBorder(100,0,0,0));
+
         title = new JLabel("Question 1. In general, I am the life of the party.", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.BOLD, 20));
-        //title.setBorder(BorderFactory.createEmptyBorder(100,0,0,0));
-        //add(title, BorderLayout.NORTH);
         titlePanel.add(title);
         add(titlePanel, BorderLayout.NORTH);
 
         // CENTER
-        /*
-        JRadioButton option1Button = new JRadioButton("Yes");
-        //option1Button.setMnemonic(KeyEvent.VK_C);
-        //option1Button.setActionCommand(catString);
-
-        JRadioButton option2Button = new JRadioButton("No");
-
-        ButtonGroup group = new ButtonGroup();
-        group.add(option1Button);
-        group.add(option2Button);
-
-        JPanel middlePanel = new JPanel();
-        middlePanel.setLayout(new GridLayout(1,0));
-        middlePanel.setBorder(BorderFactory.createEmptyBorder(90,100,90,100));
-        middlePanel.add(option1Button);
-        middlePanel.add(option2Button);
-        add(middlePanel, BorderLayout.CENTER);
-        middlePanel.setOpaque(false);
-         */
-
-        JSlider optionSlider = new JSlider(1, 5, 3);
+        optionSlider = new JSlider(1, 5, 3);
         optionSlider.setMajorTickSpacing(1);
         optionSlider.setMinorTickSpacing(1);
         optionSlider.setPaintLabels(true);
@@ -70,41 +54,52 @@ public class QuestionPanel extends JFrame {
 
 
         // South
-        JPanel bottomPanel = new JPanel();
+        bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridLayout(1,2));
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
         bottomPanel.setOpaque(false);
 
-        JButton nextButton = new JButton("Next question");
-        nextButton.setBorder(BorderFactory.createEmptyBorder(0,100,0,100));
+        nextButton = new JButton("Next question");
+        nextButton.addActionListener(new nextButtonListener());
+        //nextButton.setBorder(BorderFactory.createEmptyBorder(0,100,0,100));
 
-        JComboBox questionChooser = new JComboBox();
+        questionChooser = new JComboBox();
         for ( int i =0; i<bank.items.size(); i++){
             questionChooser.addItem(bank.items.get(i));
-            System.out.println(bank.items.get(i).getItemNumber());
-            System.out.println(bank.items.get(i).getDescription());
+            //System.out.println(bank.items.get(i).getItemNumber());
+            //System.out.println(bank.items.get(i).getDescription());
         }
-        questionChooser.addItemListener(new questionChooserListener());
+        questionChooser.addItemListener(new QuestionChooserListener());
 
-        add(nextButton, BorderLayout.EAST);
-        add(questionChooser,BorderLayout.WEST);
         bottomPanel.add(nextButton);
         bottomPanel.add(questionChooser);
-        add(bottomPanel,BorderLayout.SOUTH);
+        add(bottomPanel, BorderLayout.SOUTH);
 
         setVisible(true);
 
     }
 
-    private class questionChooserListener implements ItemListener{
+    private class QuestionChooserListener implements ItemListener{
 
         @Override
         public void itemStateChanged(ItemEvent e) {
             JComboBox selector = (JComboBox) e.getSource();
             Item selectedItem = (Item) selector.getSelectedItem();
             title.setText(selectedItem.getDescription());
+            currentItemNumber = Integer.parseInt(selectedItem.getItemNumber());
         }
     }
 
+    private class nextButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent evt)  {
+            //System.out.println(questionChooser.getSelectedItem());
+            if (currentItemNumber < 20) {
+                title.setText(bank.items.get(currentItemNumber).getDescription());
+                currentItemNumber += 1;
+            }
+        }
+    }
 
 }
