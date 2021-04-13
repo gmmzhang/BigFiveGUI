@@ -5,22 +5,26 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 
-public class LoginPage implements ActionListener {
+public class LoginPage extends JPanel {
 
-    JFrame frame = new JFrame();
-    JButton loginButton = new JButton("Login");
-    JButton resetButton = new JButton("Reset");
-    JTextField userIDField = new JTextField();
-    JPasswordField userPasswordField = new JPasswordField();
-    JLabel userIDLabel = new JLabel("UserID:");
-    JLabel userPasswordLabel = new JLabel("Password:");
-    JLabel messageLabel = new JLabel();
+    //JFrame frame = new JFrame();
+    private JButton loginButton = new JButton("Login");
+    private JButton resetButton = new JButton("Reset");
+    private JTextField userIDField = new JTextField();
+    private JPasswordField userPasswordField = new JPasswordField();
+    private JLabel userIDLabel = new JLabel("UserID:");
+    private JLabel userPasswordLabel = new JLabel("Password:");
+    private JLabel messageLabel = new JLabel();
+    private MainWindow frame;
+    private IDandPasswords idandPasswords;
+    private HashMap<String,String> logininfo;
 
 
-    HashMap<String,String> logininfo = new HashMap<String,String>();
-    LoginPage(HashMap<String,String> loginInfoOriginal){
-
-        logininfo = loginInfoOriginal;
+    public LoginPage(MainWindow mainWindow){
+        frame = mainWindow; // Contain the MainWindow JFrame
+        //logininfo = loginInfoOriginal;
+        idandPasswords= new IDandPasswords();
+        logininfo = idandPasswords.getLoginInfo();
 
         userIDLabel.setBounds(50,100,75,25);
         userPasswordLabel.setBounds(50,150,75,25);
@@ -32,33 +36,61 @@ public class LoginPage implements ActionListener {
 
         loginButton.setBounds(125,200,100,25);
         loginButton.setFocusable(false);
-        loginButton.addActionListener(this);
+        loginButton.addActionListener(new loginButtonListener());
 
         resetButton.setBounds(225,200,100,25);
         resetButton.setFocusable(false);
-        resetButton.addActionListener(this);
+        resetButton.addActionListener(new resetButtonListener());
 
+        add(userIDLabel);
+        add(userPasswordLabel);
+        add(messageLabel);
+        add(userIDField);
+        add(userPasswordField);
+        add(loginButton);
+        add(resetButton);
 
-
-
-
-        frame.add(userIDLabel);
-        frame.add(userPasswordLabel);
-        frame.add(messageLabel);
-        frame.add(userIDField);
-        frame.add(userPasswordField);
-        frame.add(loginButton);
-        frame.add(resetButton);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,420);
-        frame.setLayout(null);
-        frame.setVisible(true);
-
+        //setSize(420,420);
+        //setLayout(null);
+        //setVisible(true);
     }
 
+    private class loginButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            String userID = userIDField.getText();
+            String password = String.valueOf(userPasswordField.getPassword());
+
+            if(logininfo.containsKey(userID)){
+                if(logininfo.get(userID).equals(password)){
+                    messageLabel.setForeground(Color.green);
+                    messageLabel.setText("Login successful");
+                    //WelcomePage welcomePage = new WelcomePage(userID);
+                    frame.userLoggedIn(userID);
+                }
+                else{
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText("Wrong Password");
+                }
+            }
+            else{
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Username Not Found");
+            }
+        }
+    }
+
+    private class resetButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            userIDField.setText("");
+            userPasswordField.setText("");
+        }
+    }
+
+    /*
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
 
         if(e.getSource()==resetButton){
             userIDField.setText("");
@@ -89,4 +121,6 @@ public class LoginPage implements ActionListener {
         }
 
     }
+
+     */
 }
