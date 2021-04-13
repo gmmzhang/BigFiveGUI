@@ -11,7 +11,7 @@ public class QuestionPanel extends JPanel {
     private ItemBank bank;
     private JLabel title;
     private JPanel titlePanel;
-    private MainWindow frame;
+    private MainFrame frame;
     private String userID;
     private JSlider optionSlider;
     private JComboBox questionChooser;
@@ -19,8 +19,8 @@ public class QuestionPanel extends JPanel {
     private JButton nextButton;;
     private int currentItemNumber;
 
-    public QuestionPanel(MainWindow mainwindow, ItemBank itembank, String user) {
-        frame = mainwindow;
+    public QuestionPanel(MainFrame mainframe, ItemBank itembank, String user) {
+        frame = mainframe;
         bank = itembank;
         userID = user;
         currentItemNumber = 1;
