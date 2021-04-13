@@ -5,13 +5,13 @@ import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
 import java.util.Hashtable;
 
-public class MainWindow extends JFrame {
+public class QuestionPanel extends JFrame {
 
     private itemBank bank;
     private JLabel title;
     private JPanel titlePanel;
 
-    public MainWindow(itemBank bank){
+    public QuestionPanel(itemBank bank){
 
         super("Big Five Personality Assessment");
         this.bank = bank;
@@ -106,19 +106,5 @@ public class MainWindow extends JFrame {
         }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-//        MainWindow window = new MainWindow();
-        try {
-            itemBank bank = new itemBank("Questions.txt");
-            MainWindow window = new MainWindow(bank);
-
-        }catch (FileNotFoundException e){
-            JOptionPane optionPane = new JOptionPane("Could not find the file.", JOptionPane.ERROR_MESSAGE);
-            JDialog dialog = optionPane.createDialog("Error!!");
-            dialog.setAlwaysOnTop(true);
-            dialog.setVisible(true);
-        }
-
-    }
 
 }
