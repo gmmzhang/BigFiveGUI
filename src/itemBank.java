@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class itemBank {
+public class ItemBank {
 
     ArrayList<Item> items;
 
-    public itemBank(String fileName) throws FileNotFoundException{
+    public ItemBank(String fileName) throws FileNotFoundException{
         items = new ArrayList<Item>();
         try {
             Scanner input = new Scanner(new File(fileName));
