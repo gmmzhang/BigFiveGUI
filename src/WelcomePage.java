@@ -1,21 +1,27 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class WelcomePage {
+public class WelcomePage extends JPanel {
 
-    JFrame frame = new JFrame();
-    JLabel welcomeLabel = new JLabel("Please Start BIGFIVE Test");
+    private JLabel welcomeLabel;
+    private JButton startButton;
 
-    WelcomePage(String userID){
+    public WelcomePage(String userID){
+        welcomeLabel = new JLabel("Welcome to the BIG FIVE Personality Test, " + userID);
+        startButton = new JButton("START");
+
         welcomeLabel.setBounds(0,0,400,35);
         welcomeLabel.setFont(new Font(null,Font.PLAIN,25));
-        welcomeLabel.setText("Please Start BIGFIVE Test " + userID);
+        //welcomeLabel.setText("Please Start BIGFIVE Test " + userID);
 
-        frame.add(welcomeLabel);
+        add(welcomeLabel);
+        add(startButton);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,420);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        /*
+        setSize(420,420);
+        setLayout(null);
+        setVisible(true);
+
+         */
     }
 }
