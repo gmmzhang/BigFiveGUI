@@ -15,13 +15,13 @@ public class LoginPage extends JPanel {
     private JLabel userIDLabel;
     private JLabel userPasswordLabel;
     private JLabel messageLabel;
-    private MainWindow frame;
+    private MainFrame frame;
     private IDandPasswords idandPasswords;
     private HashMap<String,String> logininfo;
 
 
-    public LoginPage(MainWindow mainWindow){
-        frame = mainWindow; // Contain the MainWindow JFrame
+    public LoginPage(MainFrame mainframe){
+        frame = mainframe; // Contain the MainWindow JFrame
         //logininfo = loginInfoOriginal;
         idandPasswords= new IDandPasswords();
         logininfo = idandPasswords.getLoginInfo();
