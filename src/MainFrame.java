@@ -5,6 +5,7 @@ public class MainFrame extends JFrame{
     private LoginPage loginPanel; // Declare a variable of JPanel type.
     private WelcomePage welcomePanel;
     private QuestionPanel questionPanel;
+    private ReportPanel reportPanel;
     private IDandPasswords idandPasswords;
     private ItemBank bank;
     public int Height;
@@ -37,6 +38,15 @@ public class MainFrame extends JFrame{
         remove(welcomePanel);
         questionPanel = new QuestionPanel(this, bank, userID);
         add(questionPanel);
+        getContentPane().invalidate();
+        getContentPane().validate();
+        //pack();
+    }
+
+    public void userSubmitted(String userID, int[] questionAnswer) {
+        remove(questionPanel);
+        reportPanel = new ReportPanel(this, userID, questionAnswer);
+        add(reportPanel);
         getContentPane().invalidate();
         getContentPane().validate();
         //pack();
