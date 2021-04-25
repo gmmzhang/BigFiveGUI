@@ -9,11 +9,13 @@ public class WelcomePage extends JPanel {
     private JButton startButton;
     private JLabel instructionLabel1;
     private JLabel instructionLabel2;
+    private JLabel instructionLabel3;
     private MainFrame frame;
     private String userID;
     private JPanel centerPanel;
     private JPanel tempPanel1;
     private JPanel tempPanel2;
+    private JPanel tempPanel3;
 
     public WelcomePage(MainFrame mainframe, String user){
         frame = mainframe;
@@ -30,18 +32,23 @@ public class WelcomePage extends JPanel {
         // CENTER
         centerPanel = new JPanel();
         centerPanel.setOpaque(false); //
-        centerPanel.setLayout(new GridLayout(2,1));
+        centerPanel.setLayout(new GridLayout(3,1));
 
         tempPanel1 = new JPanel();
         tempPanel2 = new JPanel();
-        instructionLabel1 = new JLabel("Instruction: Please read each question and select: ", SwingConstants.CENTER);
-        instructionLabel2 = new JLabel("How much do you agree with each statement about you as you generally are now, not as you wish to be in the future?", SwingConstants.CENTER);
-        tempPanel1.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
-        tempPanel2.setBorder(BorderFactory.createEmptyBorder(0,0,150,0));
+        tempPanel3 = new JPanel();
+        instructionLabel1 = new JLabel("INSTRUCTION", SwingConstants.CENTER);
+        instructionLabel2 = new JLabel("Please read each question and select: ", SwingConstants.CENTER);
+        instructionLabel3 = new JLabel("How much do you agree with each statement about you as you generally are now (not as you wish to be in the future)?", SwingConstants.CENTER);
+        tempPanel1.setBorder(BorderFactory.createEmptyBorder(110,0,0,0));
+        tempPanel2.setBorder(BorderFactory.createEmptyBorder(80,0,0,0));
+        tempPanel3.setBorder(BorderFactory.createEmptyBorder(0,0,300,0));
         tempPanel1.add(instructionLabel1);
         tempPanel2.add(instructionLabel2);
+        tempPanel3.add(instructionLabel3);
         centerPanel.add(tempPanel1);
         centerPanel.add(tempPanel2);
+        centerPanel.add(tempPanel3);
         add(centerPanel, BorderLayout.CENTER);
 
         // SOUTH
@@ -59,9 +66,10 @@ public class WelcomePage extends JPanel {
     private class StartButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent evt) {
-            remove(tempPanel1);
-            remove(tempPanel2);
-            remove(centerPanel);
+            //remove(tempPanel1);
+            //remove(tempPanel2);
+            //remove(tempPanel3);
+            //remove(centerPanel);
             frame.userStarted(userID);
         }
     }
