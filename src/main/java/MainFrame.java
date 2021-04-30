@@ -10,6 +10,7 @@ public class MainFrame extends JFrame{
     private ItemBank bank;
     public int Height;
     public int Width;
+    private CommentsPanel commentsPanel;
 
 
     public MainFrame(ItemBank itemBank) { // Constructor
@@ -50,6 +51,14 @@ public class MainFrame extends JFrame{
         getContentPane().invalidate();
         getContentPane().validate();
         //pack();
+    }
+
+    public void leaveComments(String userID){
+        remove(reportPanel);
+        commentsPanel = new CommentsPanel(this, userID);
+        add(commentsPanel);
+        getContentPane().invalidate();
+        getContentPane().validate();
     }
 
 }

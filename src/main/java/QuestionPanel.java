@@ -23,6 +23,13 @@ public class QuestionPanel extends JPanel {
     private JButton submitButton;
     private int currentItemNumber;
     public int[] questionAnswer;
+//    private JButton smallButton;
+    private JButton largeButton;
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
 
     public QuestionPanel(MainFrame mainframe, ItemBank itembank, String user) {
         frame = mainframe;
@@ -45,7 +52,17 @@ public class QuestionPanel extends JPanel {
 
         title = new JLabel("Question 1. In general, I am the life of the party.", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.BOLD, 20));
-        titlePanel.add(title);
+
+//        smallButton = new JButton("Smaller Font");
+//        smallButton.addActionListener(new QuestionPanel.SmallButtionListener());
+
+        largeButton = new JButton("Larger Font");
+        largeButton.addActionListener(new LargeButtionListener());
+
+//        titlePanel.add(smallButton, BorderLayout.EAST);
+        titlePanel.add(largeButton, BorderLayout.WEST);
+        titlePanel.add(title, BorderLayout.CENTER);
+
         add(titlePanel, BorderLayout.NORTH);
 
         // CENTER
@@ -54,12 +71,17 @@ public class QuestionPanel extends JPanel {
         optionSlider.setMinorTickSpacing(1);
         optionSlider.setPaintLabels(true);
         Hashtable<Integer, JLabel> table = new Hashtable<Integer, JLabel>();
-        //table.put (1, new JLabel(new ImageIcon("yourFile.gif")));
-        table.put (1, new JLabel("Strongly \nDisagree"));
-        table.put (2, new JLabel("Somewhat \nDisagree"));
-        table.put (3, new JLabel("Neither Agree \nnor Disagree"));
-        table.put (4, new JLabel("Somewhat \nAgree"));
-        table.put (5, new JLabel("Strongly \nAgree"));
+        label1 = new JLabel("<html>Strongly<br/>Disagree<html/>");
+        table.put (1, label1);
+        label2 = new JLabel("<html>Somewhat<br/>Disagree<html>");
+        table.put (2, label2);
+        label3 = new JLabel("<html>Neither Agree<br/>nor Disagree<html>");
+        table.put (3, label3);
+        label4 = new JLabel("<html>Somewhat<br/>Agree<html>");
+        table.put (4, label4);
+        label5 = new JLabel("<html>Strongly<br/>Agree<html>");
+        table.put (5, label5);
+
         optionSlider.setLabelTable (table);
         optionSlider.addChangeListener(new OptionSliderListener());
         add(optionSlider, BorderLayout.CENTER);
@@ -142,5 +164,31 @@ public class QuestionPanel extends JPanel {
             frame.userSubmitted(userID, questionAnswer);
         }
     }
+
+    private class LargeButtionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            title.setFont(new Font("Serif", Font.BOLD, 25));
+            label1.setFont(new Font(null,Font.PLAIN,15));
+            label2.setFont(new Font(null,Font.PLAIN,15));
+            label3.setFont(new Font(null,Font.PLAIN,15));
+            label4.setFont(new Font(null,Font.PLAIN,15));
+            label5.setFont(new Font(null,Font.PLAIN,15));
+        }
+    }
+
+//    private class SmallButtionListener implements ActionListener{
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            title.setFont(new Font("Serif", Font.BOLD, 15));
+//            label1.setFont(new Font(null,Font.PLAIN,15));
+//            label2.setFont(new Font(null,Font.PLAIN,15));
+//            label3.setFont(new Font(null,Font.PLAIN,15));
+//            label4.setFont(new Font(null,Font.PLAIN,15));
+//            label5.setFont(new Font(null,Font.PLAIN,15));
+//        }
+//    }
 
 }

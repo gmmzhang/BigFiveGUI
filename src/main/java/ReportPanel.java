@@ -2,10 +2,16 @@ import javax.swing.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -14,6 +20,7 @@ public class ReportPanel extends JPanel {
     private MainFrame frame;
     private String userID;
     private int[] questionAnswer;
+    private JButton commentsButton;
 
     public ReportPanel(MainFrame mainframe, String user, int[] answer) {
         frame = mainframe;
@@ -35,6 +42,13 @@ public class ReportPanel extends JPanel {
         System.out.println(finalWeights);
 
         add(createDemoPanel());
+
+        PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
+                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+
+        commentsButton = new JButton("Leave Feedback");
+        commentsButton.addActionListener(new CommentsButtonListener());
+        add(commentsButton, BorderLayout.SOUTH);
 
     }
 
@@ -135,9 +149,28 @@ public class ReportPanel extends JPanel {
         return chart;
     }
 
+//    PiePlot plot = (PiePlot) createChart(createDataset(finalWeights)).getPlot();
+//    plot.setLabelGenerator(true);
+
     public static JPanel createDemoPanel(){
         JFreeChart chart = createChart(createDataset(finalWeights));
+
+        PiePlot plot = (PiePlot) chart.getPlot();
+        PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
+                "{0}:  {2}", new DecimalFormat("0"), new DecimalFormat("0%"));
+        plot.setLabelGenerator(gen);
+
         return new ChartPanel(chart);
     }
+
+    private class CommentsButtonListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.leaveComments(userID);
+        }
+    }
+
+
 
 }
