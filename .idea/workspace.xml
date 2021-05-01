@@ -5,55 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4728e7af-e6c8-4096-9e48-7d49a5ca3957" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BigFiveGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BigFiveGUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Questions.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jexample.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/IDandPasswords.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/LoginPage$LoginButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/LoginPage$ResetButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/LoginPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/MainFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/QuestionPanel$OptionSliderListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/QuestionPanel$QuestionChooserListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/QuestionPanel$SubmitButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/QuestionPanel$nextButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/QuestionPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/ReportPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/WelcomePage$StartButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/WelcomePage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BigFiveGUI/itemBank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IDandPasswords.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuestionPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReportPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WelcomePage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/itemBank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/QuestionPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/QuestionPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReportPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ReportPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WelcomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WelcomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/QuestionPanel$NextButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/QuestionPanel$NextButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/QuestionPanel$OptionSliderListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/QuestionPanel$OptionSliderListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/QuestionPanel$QuestionChooserListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/QuestionPanel$QuestionChooserListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/QuestionPanel$SubmitButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/QuestionPanel$SubmitButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/QuestionPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/QuestionPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ReportPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ReportPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WelcomePage$StartButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WelcomePage$StartButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WelcomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WelcomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
