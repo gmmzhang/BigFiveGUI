@@ -15,23 +15,21 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.lang.Math.round;
+
 public class ReportPanel extends JPanel {
     private static ArrayList<Double> finalWeights;
     private MainFrame frame;
     private String userID;
     private int[] questionAnswer;
     private JButton commentsButton;
+    private JTable table;
 
     public ReportPanel(MainFrame mainframe, String user, int[] answer) {
         frame = mainframe;
         userID = user;
         questionAnswer = answer;
         finalWeights = new ArrayList<Double>();
-
-        //System.out.println(Arrays.toString(questionAnswer));
-        //System.out.println(Arrays.toString(reverse(questionAnswer)));
-        int[] answerArray = reverse(questionAnswer);
-        //System.out.println(Arrays.toString(answerArray));
 
         finalWeights.add(getAvgE(reverse(questionAnswer)));
         finalWeights.add(getAvgA(reverse(questionAnswer)));
@@ -41,14 +39,29 @@ public class ReportPanel extends JPanel {
 
         System.out.println(finalWeights);
 
-        add(createDemoPanel());
+        String[] columnNames = {"Category","Percentage"};
 
-        PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
-                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+        double sum = finalWeights.stream().mapToDouble(Double::doubleValue).sum();
+
+        Object[][] records = {
+                {"Extraversion", round(finalWeights.get(0)/sum*100)+"%"},
+                {"Agreeableness", round(finalWeights.get(1)/sum*100)+"%"},
+                {"Conscientiousness", round(finalWeights.get(2)/sum*100)+"%"},
+                {"Neuroticism", round(finalWeights.get(3)/sum*100)+"%"},
+                {"Intellect/Imagination", round(finalWeights.get(4)/sum*100)+"%"}
+        };
+
+        table = new JTable(records, columnNames);
+
+        //add(table, BorderLayout.NORTH);
+        add(new JScrollPane(table));
+        add(new JScrollPane(createDemoPanel()));
+
+        frame.setSize(1500,500);
 
         commentsButton = new JButton("Leave Feedback");
         commentsButton.addActionListener(new CommentsButtonListener());
-        add(commentsButton, BorderLayout.SOUTH);
+        add(commentsButton);
 
     }
 
