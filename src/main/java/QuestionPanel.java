@@ -75,7 +75,8 @@ public class QuestionPanel extends JPanel {
         table.put (1, label1);
         label2 = new JLabel("<html>Somewhat<br/>Disagree<html>");
         table.put (2, label2);
-        label3 = new JLabel("<html>Neither Agree<br/>nor Disagree<html>");
+        //label3 = new JLabel("<html>Neither Agree<br/>nor Disagree<html>");
+        label3 = new JLabel("<html>Neutral<html>");
         table.put (3, label3);
         label4 = new JLabel("<html>Somewhat<br/>Agree<html>");
         table.put (4, label4);
@@ -108,8 +109,8 @@ public class QuestionPanel extends JPanel {
         submitButton = new JButton("Submit");
         submitButton.addActionListener(new SubmitButtonListener());
 
-        bottomPanel.add(nextButton);
         bottomPanel.add(questionChooser);
+        bottomPanel.add(nextButton);
         bottomPanel.add(submitButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
