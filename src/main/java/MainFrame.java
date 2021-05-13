@@ -11,7 +11,7 @@ public class MainFrame extends JFrame{
     public int Height;
     public int Width;
     private CommentsPanel commentsPanel;
-
+    private ByePage byePage;
 
     public MainFrame(ItemBank itemBank) { // Constructor
         super("Big Five Personality Assessment"); // Set the frame title
@@ -57,6 +57,14 @@ public class MainFrame extends JFrame{
         remove(reportPanel);
         commentsPanel = new CommentsPanel(this, userID);
         add(commentsPanel);
+        getContentPane().invalidate();
+        getContentPane().validate();
+    }
+
+    public void sayGoodbye(String userID){
+        remove(commentsPanel);
+        byePage = new ByePage(this, userID);
+        add(byePage);
         getContentPane().invalidate();
         getContentPane().validate();
     }
