@@ -24,12 +24,15 @@ public class ReportPanel extends JPanel {
     private int[] questionAnswer;
     private JButton commentsButton;
     private JTable table;
+    public static Object[][] userRecords;
 
-    public ReportPanel(MainFrame mainframe, String user, int[] answer) {
+    public ReportPanel(MainFrame mainframe, String user, int[] answer, Object[][] records) {
         frame = mainframe;
         userID = user;
         questionAnswer = answer;
-        finalWeights = new ArrayList<Double>();
+        userRecords = records;
+
+        finalWeights = new ArrayList<>();
 
         finalWeights.add(getAvgE(reverse(questionAnswer)));
         finalWeights.add(getAvgA(reverse(questionAnswer)));
@@ -37,21 +40,23 @@ public class ReportPanel extends JPanel {
         finalWeights.add(getAvgN(reverse(questionAnswer)));
         finalWeights.add(getAvgI(reverse(questionAnswer)));
 
-        System.out.println(finalWeights);
+        //System.out.println(finalWeights);
 
         String[] columnNames = {"Category","Percentage"};
 
         double sum = finalWeights.stream().mapToDouble(Double::doubleValue).sum();
 
-        Object[][] records = {
-                {"Extraversion", round(finalWeights.get(0)/sum*100)+"%"},
+        userRecords = new Object[][]{
+                {"Extroversion", round(finalWeights.get(0)/sum*100)+"%"},
                 {"Agreeableness", round(finalWeights.get(1)/sum*100)+"%"},
                 {"Conscientiousness", round(finalWeights.get(2)/sum*100)+"%"},
                 {"Neuroticism", round(finalWeights.get(3)/sum*100)+"%"},
                 {"Intellect/Imagination", round(finalWeights.get(4)/sum*100)+"%"}
         };
 
-        table = new JTable(records, columnNames);
+        table = new JTable(userRecords, columnNames);
+        //System.out.println(Arrays.deepToString(userRecords));
+        System.out.print(Arrays.deepToString(getRecords()));
 
         //add(table, BorderLayout.NORTH);
         add(new JScrollPane(table));
@@ -63,6 +68,10 @@ public class ReportPanel extends JPanel {
         commentsButton.addActionListener(new CommentsButtonListener());
         add(commentsButton);
 
+    }
+
+    public static Object[][] getRecords() {
+        return userRecords;
     }
 
     public int[] reverse(int[] arr1){
@@ -143,7 +152,7 @@ public class ReportPanel extends JPanel {
 
     private static PieDataset createDataset(ArrayList<Double> arr){
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Extraversion", arr.get(0));
+        dataset.setValue("Extroversion", arr.get(0));
         dataset.setValue("Agreeableness", arr.get(1));
         dataset.setValue("Conscientiousness", arr.get(2));
         dataset.setValue("Neuroticism", arr.get(3));
