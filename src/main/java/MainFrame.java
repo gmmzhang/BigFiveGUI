@@ -10,7 +10,9 @@ public class MainFrame extends JFrame{
     private ItemBank bank;
     public int Height;
     public int Width;
-
+    private CommentsPanel commentsPanel;
+    private ByePage byePage;
+    private Object[][] userRecords;
 
     public MainFrame(ItemBank itemBank) { // Constructor
         super("Big Five Personality Assessment"); // Set the frame title
@@ -45,11 +47,27 @@ public class MainFrame extends JFrame{
 
     public void userSubmitted(String userID, int[] questionAnswer) {
         remove(questionPanel);
-        reportPanel = new ReportPanel(this, userID, questionAnswer);
+        reportPanel = new ReportPanel(this, userID, questionAnswer, userRecords);
         add(reportPanel);
         getContentPane().invalidate();
         getContentPane().validate();
         //pack();
+    }
+
+    public void leaveComments(String userID){
+        remove(reportPanel);
+        commentsPanel = new CommentsPanel(this, userID, userRecords);
+        add(commentsPanel);
+        getContentPane().invalidate();
+        getContentPane().validate();
+    }
+
+    public void sayGoodbye(String userID){
+        remove(commentsPanel);
+        byePage = new ByePage(this, userID);
+        add(byePage);
+        getContentPane().invalidate();
+        getContentPane().validate();
     }
 
 }
